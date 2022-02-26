@@ -36,7 +36,7 @@
             </a>
         </div>
         <div class="pageTitle">
-            Discover
+            @yield('title')
         </div>
         <div class="right">
             <a href="javascript:;" class="headerButton toggle-searchbox">
@@ -57,25 +57,19 @@
     @yield('footer')
 @else
     <div class="appBottomMenu">
-        <a href="index.html" class="item active">
+        <a href="{{route('index')}}" class="item active">
             <div class="col">
                 <ion-icon name="home-outline"></ion-icon>
             </div>
         </a>
-        <a href="app-components.html" class="item">
+        <a href="{{route('quizzes')}}" class="item">
             <div class="col">
                 <ion-icon name="cube-outline"></ion-icon>
             </div>
         </a>
-        <a href="page-chat.html" class="item">
+        <a href="{{route('profile')}}" class="item">
             <div class="col">
-                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-                <span class="badge badge-danger">5</span>
-            </div>
-        </a>
-        <a href="app-pages.html" class="item">
-            <div class="col">
-                <ion-icon name="layers-outline"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
             </div>
         </a>
         <a href="javascript:;" class="item" data-toggle="modal" data-target="#sidebarPanel">
@@ -84,6 +78,98 @@
             </div>
         </a>
     </div>
+    <div class="modal fade panelbox panelbox-left" id="sidebarPanel" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+
+                    <!-- profile box -->
+                    <div class="profileBox">
+                        <div class="image-wrapper">
+                            <img src="{{request()->get('currentUser')->user_image}}" alt="image" class="imaged rounded">
+                        </div>
+                        <div class="in">
+                            <strong>{{request()->get('currentUser')->username}}</strong>
+                            <div class="text-muted">
+                                {{request()->get('currentUser')->email}}
+                            </div>
+                        </div>
+                        <a href="javascript:;" class="close-sidebar-button" data-dismiss="modal">
+                            <ion-icon name="close"></ion-icon>
+                        </a>
+                    </div>
+                    <!-- * profile box -->
+
+                    <ul class="listview flush transparent no-line image-listview mt-2">
+                        <li>
+                            <a href="{{route('index')}}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="home-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Homepage
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('quizzes')}}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="cube-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Quizzes
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('profile')}}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    <div>Profile</div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <div class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="moon-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    <div>Dark Mode</div>
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input dark-mode-switch"
+                                               id="darkmodesidebar">
+                                        <label class="custom-control-label" for="darkmodesidebar"></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="listview-title mt-2 mb-1">
+                        <span>Extras</span>
+                    </div>
+                    <ul class="listview image-listview flush transparent no-line">
+                        <li>
+                            <a href="{{route('logout')}}" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="exit-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    <div>Logout</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- * sidebar buttons -->
+            </div>
+        </div>
+    </div>
+    <!-- * App Sidebar -->
 @endif
 <!-- * App Bottom Bar -->
 

@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['user.auth']],function () {
-    Route::get('/', function () {
-        return 2+2;
-    });
+    Route::get('/', [\App\Http\Controllers\Index::class,'index'])->name('index');
+    Route::get('/quizzes', [\App\Http\Controllers\Quizzes::class,'index'])->name('quizzes');
+    Route::get('/profile', [\App\Http\Controllers\Profile::class,'index'])->name('profile');
+    Route::get('/logout', [\App\Http\Controllers\Index::class,'logout'])->name('logout');
     Route::get('login', [\App\Http\Controllers\Login::class,'index'])->name('login');
     Route::post('loginPost', [\App\Http\Controllers\Login::class,'loginPost'])->name('login.post');
     Route::get('register', [\App\Http\Controllers\Register::class,'index'])->name('register');
