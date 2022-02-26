@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Login |')
 @section('header')
     &nbsp;
 @endsection
@@ -47,6 +48,18 @@
                 </form>
             </div>
         </div>
+        @foreach ($errors->all() as $error)
+            <br>
+            <div style="max-width: 90%;margin: auto;" class="alert alert-danger" role="alert">
+                {{ $error }}
+            </div>
+        @endforeach
+        @if (session()->has('message'))
+            <br>
+            <div style="max-width: 90%;margin: auto;" class="alert alert-success" role="alert">
+                {{ session()->get('message') }}
+            </div>
+        @endif
     </div>
 @endsection
 @section('footer')

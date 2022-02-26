@@ -8,6 +8,7 @@ I created for just self improve my PHP skills. If you have any issues with this 
 
 - composer install
 - Edit .env file for DB connection. (You should create utf8mb4_general_ci database for emojies)
+- If you want email for forgot password, you can use mailtrap.io
 - php artisan key:generate
 - php artisan migrate
 - php artisan db:seed

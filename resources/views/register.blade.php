@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title','Register |')
 @section('header')
     <div class="appHeader no-border transparent position-absolute">
         <div class="left">
@@ -23,11 +24,11 @@
                 <h4>Fill the form to join us</h4>
             </div>
             <div class="section mt-2 mb-5">
-                <form action="app-pages.html">
-
+                <form method="post" action="{{route('register.post')}}">
+                    @csrf
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="email" class="form-control" id="name1" placeholder="Full name">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Username">
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
@@ -36,7 +37,7 @@
 
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="email" class="form-control" id="email1" placeholder="Email address">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
@@ -45,7 +46,7 @@
 
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="password" class="form-control" id="password1" placeholder="Password">
+                            <input type="password" class="form-control" id="password1" name="password1" placeholder="Password">
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
@@ -54,23 +55,13 @@
 
                     <div class="form-group boxed">
                         <div class="input-wrapper">
-                            <input type="password" class="form-control" id="password2"
+                            <input type="password" class="form-control" id="password2" name="password2"
                                    placeholder="Password (again)">
                             <i class="clear-input">
                                 <ion-icon name="close-circle"></ion-icon>
                             </i>
                         </div>
                     </div>
-
-                    <div class=" mt-1 text-left">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customChecka1">
-                            <label class="custom-control-label text-muted" for="customChecka1">I Agree <a
-                                    href="javascript:;">Terms & Conditions</a></label>
-                        </div>
-
-                    </div>
-
                     <div class="form-button-group">
                         <button type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
                     </div>
@@ -78,6 +69,12 @@
                 </form>
             </div>
         </div>
+        @foreach ($errors->all() as $error)
+            <br>
+            <div style="max-width: 90%;margin: auto;" class="alert alert-danger" role="alert">
+                {{ $error }}
+            </div>
+        @endforeach
     </div>
 @endsection
 @section('footer')

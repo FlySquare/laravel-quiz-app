@@ -19,8 +19,11 @@ class UserAuth
     {
         $exceptPages = [
             '/login',
+            '/loginPost',
             '/register',
-            '/forgotPassword'
+            '/registerPost',
+            '/forgotPassword',
+            '/forgotPasswordPost'
         ];
         if (!$request->session()->has('user_logged') && !in_array($request->getRequestUri(), $exceptPages)) {
             return redirect(route('login'));
