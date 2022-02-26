@@ -6,7 +6,8 @@ I created for just self improve my PHP skills. If you have any issues with this 
 
 ### Installation Steps
 
-- Edit .env file for DB connection.
+- composer install
+- Edit .env file for DB connection. (You should create utf8mb4_general_ci database for emojies)
 - php artisan key:generate
 - php artisan migrate
 - php artisan db:seed
